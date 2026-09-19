@@ -22,29 +22,14 @@ class ViewController: UIViewController{
     }()
     
     //messsage(Сообщение)
-    var messageView : UITextView = {
-       let message = UITextView()
-        message.translatesAutoresizingMaskIntoConstraints = false
-        message.text = "Сообщение"
-        message.textColor = .black
-        message.font = .systemFont(ofSize: 17, weight: .bold)
-        return message
-    }()
+    lazy var messageView = createLabel(text: "Сообщение")
     
     //textField(2 поля ввода)
     lazy var emailField = createTextField(placeholder: "Email")
     lazy var topicField = createTextField(placeholder: "Тема")
     
     //content(Содержимое)
-    var contentView : UITextView = {
-       let content = UITextView()
-        content.translatesAutoresizingMaskIntoConstraints = false
-        content.text = "Содержимое"
-        content.textColor = .black
-        content.font = .systemFont(ofSize: 17, weight: .bold)
-        
-        return content
-    }()
+    lazy var contentView = createLabel(text: "Содержимое")
     
     //contentText(Поле текста)
     var contentText : UITextView = {
@@ -126,11 +111,16 @@ class ViewController: UIViewController{
             
         ])
         
+    }
+    
+    private func createLabel(text : String) -> UILabel{
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 17, weight: .bold)
+        label.text = text
         
-        
-        
-        
-        
+        return label
     }
     
     private func createTextField(placeholder : String) -> UITextField {
